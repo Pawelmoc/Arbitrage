@@ -1,20 +1,22 @@
-package pl.pawel.arbitrage.price;
+package pl.pawel.arbitrage.price.provider.coinbase;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.client.RestTemplate;
+import pl.pawel.arbitrage.price.Symbol;
 
 import java.math.BigDecimal;
 
 @Slf4j
 @RequiredArgsConstructor
-public class PriceServiceBinance {
+public class CoinbaseClient {
 
     private final RestTemplate restTemplate;
+    private final String coinbaseProUrl;
 
-    public BigDecimal getCurrentPrice(String symbol) {
+    public BigDecimal getCurrentPrice(Symbol symbol) {
         PriceResponse forObject = restTemplate.getForObject(
-                "https://api.binance.com/api/v1/ticker/price?symbol=" + symbol + "TUSD",
+                coinbaseProUrl + symbol + "-USD/ticker",
                 PriceResponse.class);
 
         return forObject.getPrice();
