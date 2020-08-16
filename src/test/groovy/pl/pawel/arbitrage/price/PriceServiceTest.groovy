@@ -7,9 +7,9 @@ import pl.pawel.arbitrage.price.ResultLine.ExchangeDetails
 
 class PriceServiceTest extends Specification {
 
-    private BinanceClient binanceClient = Mock(BinanceClient);
-    private CoinbaseClient coinbaseClient = Mock(CoinbaseClient);
-    private PriceService priceService = new PriceService(binanceClient, coinbaseClient)
+    BinanceClient binanceClient = Mock(BinanceClient);
+    CoinbaseClient coinbaseClient = Mock(CoinbaseClient);
+    PriceService priceService = new PriceService(binanceClient, coinbaseClient)
 
     def "Should return exchange with lower price"() {
         given:
@@ -17,11 +17,11 @@ class PriceServiceTest extends Specification {
         BigDecimal coinbaseProPrice = 56
 
         when:
-        ExchangeDetails result = priceService.findBuyer(binancePrice, coinbaseProPrice)
+        ExchangeDetails buyer = priceService.findBuyer(binancePrice, coinbaseProPrice)
 
         then:
-        result.price == 54
-        result.exchange == 'Binance'
+        buyer.price == 54
+        buyer.exchange == 'Binance'
     }
 
     def "Should return exchange with higher price"() {
@@ -30,15 +30,17 @@ class PriceServiceTest extends Specification {
         BigDecimal coinbaseProPrice = 56
 
         when:
-        ExchangeDetails result = priceService.findSeller(binancePrice, coinbaseProPrice)
+        ExchangeDetails seller = priceService.findSeller(binancePrice, coinbaseProPrice)
 
         then:
-        result.price == 56
-        result.exchange == 'Coinbase Pro'
+        seller.price == 56
+        seller.exchange == 'Coinbase Pro'
     }
 
     def "Should calculate profit"() {
         given:
+
+        Symbol
         binanceClient.getCurrentPrice(Symbol.BTC) >> new BigDecimal(10);
         coinbaseClient.getCurrentPrice(Symbol.BTC) >> new BigDecimal(11);
         binanceClient.getCurrentPrice(Symbol.ETH) >> new BigDecimal(12);
@@ -53,7 +55,7 @@ class PriceServiceTest extends Specification {
         coinbaseClient.getCurrentPrice(Symbol.LINK) >> new BigDecimal(21);
 
         when:
-        Arbitage result = priceService.getArbitage();
+        Arbitrage result = priceService.getArbitrage();
 
         then:
         for (ResultLine value : result.resultLines) {

@@ -6,10 +6,10 @@ import spock.lang.Specification
 
 class CoinbaseClientTest extends Specification {
 
-    private static final String COINBASEPRO_URL = "coinbasepro/test"
+    static final String COINBASEPRO_URL = "coinbasepro/test"
 
-    private RestTemplate restTemplate = Mock(RestTemplate)
-    private CoinbaseClient coinbaseClient = new CoinbaseClient(restTemplate, COINBASEPRO_URL);
+    RestTemplate restTemplate = Mock(RestTemplate)
+    CoinbaseClient coinbaseClient = new CoinbaseClient(restTemplate, COINBASEPRO_URL);
 
     def "Should return price of ETH from Coinbase Pro"() {
         given:
@@ -17,7 +17,7 @@ class CoinbaseClientTest extends Specification {
 
         and:
         restTemplate.getForObject(COINBASEPRO_URL + symbol + "-USD/ticker",
-                PriceResponse.class) >> new PriceResponse(price: BigDecimal.valueOf(101));
+                CoinbasePriceResponse.class) >> new CoinbasePriceResponse(price: BigDecimal.valueOf(101));
 
         when:
         BigDecimal result = coinbaseClient.getCurrentPrice(symbol)
