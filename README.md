@@ -1,4 +1,4 @@
-# Arbitrage Project
+# Project Arbitrage 
 
 This application sources prices from APIs of popular cryptocurrency exchanges in order to find arbitrage opportunities.
 
