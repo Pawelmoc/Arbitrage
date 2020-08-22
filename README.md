@@ -4,17 +4,19 @@ This application sources prices from APIs of popular cryptocurrency exchanges in
 
 It displays an exchange with the highest and the lowest prices and calculates potential profit (excluding transation costs).
 
+Below APIs have been used:
 
+https://api.binance.com/
 
-
+https://api.pro.coinbase.com/
 
 
 ## Built With
 
-* [Spring Boot](https://spring.io/projects/spring-boot) - Creation of stand-alone, production-grade Spring based Application
-* [Hibernate](https://hibernate.org) - Mapping an object-oriented domain model to a relational database
-* [MySQL](https://www.mysql.com) - Used to store information about users
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [Spock](http://spockframework.org) - Unit tests
+* [Spring Boot](https://spring.io/projects/spring-boot)
+* [Hibernate](https://hibernate.org)
+* [MySQL](https://www.mysql.com)
+* [Maven](https://maven.apache.org/)
+* [Spock](http://spockframework.org)
 
 
