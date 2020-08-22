@@ -19,5 +19,6 @@ https://api.pro.coinbase.com/
 * [MySQL](https://www.mysql.com)
 * [Maven](https://maven.apache.org/)
 * [Spock](http://spockframework.org)
+* Lombok
 
 
