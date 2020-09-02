@@ -40,19 +40,8 @@ class PriceServiceTest extends Specification {
     def "Should calculate profit"() {
         given:
 
-        Symbol
-        binanceClient.getCurrentPrice(Symbol.BTC) >> new BigDecimal(10);
-        coinbaseClient.getCurrentPrice(Symbol.BTC) >> new BigDecimal(11);
-        binanceClient.getCurrentPrice(Symbol.ETH) >> new BigDecimal(12);
-        coinbaseClient.getCurrentPrice(Symbol.ETH) >> new BigDecimal(13);
-        binanceClient.getCurrentPrice(Symbol.XRP) >> new BigDecimal(14);
-        coinbaseClient.getCurrentPrice(Symbol.XRP) >> new BigDecimal(15);
-        binanceClient.getCurrentPrice(Symbol.BCH) >> new BigDecimal(16);
-        coinbaseClient.getCurrentPrice(Symbol.BCH) >> new BigDecimal(17);
-        binanceClient.getCurrentPrice(Symbol.LTC) >> new BigDecimal(18);
-        coinbaseClient.getCurrentPrice(Symbol.LTC) >> new BigDecimal(19);
-        binanceClient.getCurrentPrice(Symbol.LINK) >> new BigDecimal(20);
-        coinbaseClient.getCurrentPrice(Symbol.LINK) >> new BigDecimal(21);
+        binanceClient.getCurrentPrice(Symbol.BTC) >> new BigDecimal(10)
+        coinbaseClient.getCurrentPrice(Symbol.BTC) >> new BigDecimal(11)
 
         when:
         Arbitrage result = priceService.getArbitrage();

@@ -11,9 +11,9 @@ class CoinbaseClientTest extends Specification {
     RestTemplate restTemplate = Mock(RestTemplate)
     CoinbaseClient coinbaseClient = new CoinbaseClient(restTemplate, COINBASEPRO_URL);
 
-    def "Should return price of ETH from Coinbase Pro"() {
+    def "Should return price of BTC from Coinbase Pro"() {
         given:
-        Symbol symbol = Symbol.ETH
+        Symbol symbol = Symbol.BTC
 
         and:
         restTemplate.getForObject(COINBASEPRO_URL + symbol + "-USD/ticker",

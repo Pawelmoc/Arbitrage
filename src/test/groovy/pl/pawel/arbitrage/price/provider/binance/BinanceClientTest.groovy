@@ -10,9 +10,9 @@ class BinanceClientTest extends Specification {
     RestTemplate restTemplate = Mock(RestTemplate)
     BinanceClient binanceClient = new BinanceClient(restTemplate, BINANCE_URL);
 
-    def "Should return price of ETH from Binance"() {
+    def "Should return price of BTC from Binance"() {
         given:
-        Symbol symbol = Symbol.ETH
+        Symbol symbol = Symbol.BTC
 
         and:
         restTemplate.getForObject(BINANCE_URL + symbol + "USDT",
