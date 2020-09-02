@@ -4,7 +4,7 @@ This application sources prices from APIs of popular cryptocurrency exchanges in
 
 It displays an exchange with the highest and the lowest prices and calculates potential profit (excluding transation costs).
 
-Below APIs have been used:
+APIs:
 
 https://api.binance.com/
 
