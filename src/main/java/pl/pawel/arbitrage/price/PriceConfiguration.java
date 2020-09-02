@@ -16,19 +16,19 @@ class PriceConfiguration {
     }
 
     @Bean
-    BinanceClient priceService(@Value("${binance.fetch-prices}") String binanceUrl,
-                               RestTemplate restTemplate) {
+    BinanceClient binanceClient(@Value("${binance.fetch-prices}") String binanceUrl,
+                                RestTemplate restTemplate) {
         return new BinanceClient(restTemplate, binanceUrl);
     }
 
     @Bean
-    CoinbaseClient priceServiceCoinbasePro(@Value("${coinbasePro.fetch-prices}") String coinbaseProUrl,
+    CoinbaseClient coinbaseProClient(@Value("${coinbasePro.fetch-prices}") String coinbaseProUrl,
                                            RestTemplate restTemplate) {
         return new CoinbaseClient(restTemplate, coinbaseProUrl);
     }
 
     @Bean
-    PriceService resultLineService(BinanceClient binanceClient, CoinbaseClient coinbaseClient) {
+    PriceService priceService(BinanceClient binanceClient, CoinbaseClient coinbaseClient) {
         return new PriceService(binanceClient, coinbaseClient);
     }
 

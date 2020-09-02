@@ -1,4 +1,4 @@
-package pl.pawel.arbitrage.price.provider.coinbase;
+package pl.pawel.arbitrage.price.provider.binance;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class PriceResponse {
+class BinancePriceResponse {
 
     @JsonProperty("price")
     private BigDecimal price;

@@ -12,9 +12,14 @@ class PriceController {
 
     private final PriceService priceService;
 
-    @GetMapping("/arbitage")
-    Arbitage getResults() {
-        return priceService.getArbitage();
+    @GetMapping("/arbitrage")
+    Arbitrage getResults() {
+        return priceService.getArbitrage();
     }
-
 }
+
+
+
+
+
+

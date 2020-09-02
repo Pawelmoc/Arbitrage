@@ -15,10 +15,13 @@ public class BinanceClient {
     private final String binanceUrl;
 
     public BigDecimal getCurrentPrice(Symbol symbol) {
-        PriceResponse forObject = restTemplate.getForObject(
-                binanceUrl + symbol + "TUSD",
-                PriceResponse.class);
+        BinancePriceResponse forObject = getPriceFromBinance(symbol);
+        log.info("Binance - symbol: " + symbol + ", price: " + forObject.getPrice());
         return forObject.getPrice();
+    }
+
+    private BinancePriceResponse getPriceFromBinance(Symbol symbol) {
+        return restTemplate.getForObject(binanceUrl + symbol + "USDT", BinancePriceResponse.class);
     }
 
 
